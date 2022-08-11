@@ -19,8 +19,16 @@ function Dashboard() {
     });
   };
 
-  const _update = (id, status) => {};
-  const _delete = (id) => {};
+  const _update = (id, status) => {
+    update(id, status, token).then((d) => {
+      console.log(d);
+    });
+  };
+  const _delete = (id) => {
+    del(id, token).then((d) => {
+      console.log(d);
+    });
+  };
   const insert = () => {
     const data = {
       title: '',
