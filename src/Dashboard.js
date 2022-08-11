@@ -1,3 +1,5 @@
+import { toast } from 'react-toastify';
+
 import React, { useState, useEffect, useRef } from 'react';
 import { create, update, del, view } from './services';
 import { useSelector } from 'react-redux';
@@ -12,21 +14,34 @@ function Dashboard() {
     view(token).then((d) => {
       // console.log(d);
       if (d.status) {
+        toast('your todos loaded successfully');
         seta(d.data);
       } else {
         // tokn error
+        toast('token error');
       }
     });
   };
 
   const _update = (id, status) => {
     update(id, status, token).then((d) => {
-      console.log(d);
+      // console.log(d);
+      if (d.status) {
+        seta(d.data);
+        toast('updated');
+      } else {
+        toast('not updated');
+      }
     });
   };
   const _delete = (id) => {
     del(id, token).then((d) => {
-      console.log(d);
+      if (d.status) {
+        seta(d.data);
+        toast('deleted');
+      } else {
+        toast('not deleted');
+      }
     });
   };
   const insert = () => {
@@ -35,12 +50,11 @@ function Dashboard() {
       description: r2.current.value,
     };
     create(data, token).then((d) => {
-      // console.log(d);
       if (d.status) {
-        // creaed success
         seta(d.data);
+        toast('created');
       } else {
-        // failed
+        toast('not created');
       }
     });
   };

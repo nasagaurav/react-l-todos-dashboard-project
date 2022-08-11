@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
 import { signupService } from './services';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+
 function Signup() {
   const navigate = useNavigate();
   const r1 = useRef(); //name
@@ -19,10 +21,10 @@ function Signup() {
     signupService(data).then((d) => {
       console.log(d);
       if (d.status) {
-        // signup successfull
+        toast('signup successfull');
         navigate('/Login');
       } else {
-        // signup failed
+        toast('signup failed');
       }
     });
   };

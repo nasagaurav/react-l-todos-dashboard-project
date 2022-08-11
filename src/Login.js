@@ -2,6 +2,9 @@ import React, { useRef } from 'react';
 import { loginService } from './services';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+
+import { toast } from 'react-toastify';
+
 function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -18,12 +21,13 @@ function Login() {
 
     loginService(data).then((d) => {
       if (d.status) {
-        // login success
+        toast('login success');
+
         navigate('/Login');
         dispatch({ type: 'login', payload: d.token });
         dispatch({ type: 'setusername', payload: data.email });
       } else {
-        // failed to login
+        toast('failed to login');
       }
     });
   };
