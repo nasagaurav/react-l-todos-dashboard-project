@@ -1,5 +1,8 @@
 import React, { useRef } from 'react';
+import { signupService } from './services';
+import { useNavigate } from 'react-router-dom';
 function Signup() {
+  const navigate = useNavigate();
   const r1 = useRef(); //name
   const r2 = useRef(); //email
   const r3 = useRef(); //password
@@ -13,14 +16,23 @@ function Signup() {
       email: r2.current.value,
       password: r3.current.value,
     };
+    signupService(data).then((d) => {
+      console.log(d);
+      if (d.status) {
+        // signup successfull
+        navigate('/Login');
+      } else {
+        // signup failed
+      }
+    });
   };
 
   return (
     <div className="form">
       <h3>Signup</h3>
-      <input placeholder="name" />
-      <input placeholder="email" />
-      <input placeholder="password" />
+      <input ref={r1} placeholder="name" />
+      <input ref={r2} placeholder="email" />
+      <input ref={r3} placeholder="password" />
       <button onClick={hs}>signup</button>
     </div>
   );
