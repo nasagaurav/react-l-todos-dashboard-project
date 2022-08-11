@@ -31,9 +31,12 @@ function Dashboard() {
   };
   const insert = () => {
     const data = {
-      title: '',
-      description: '',
+      title: r1.current.value,
+      description: r2.current.value,
     };
+    create(data, token).then((d) => {
+      console.log(d);
+    });
   };
   useEffect(loadMyTodos, []);
   return (

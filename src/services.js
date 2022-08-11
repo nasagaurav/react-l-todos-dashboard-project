@@ -35,7 +35,7 @@ export const view = async (token) => {
 export const create = async (payload, token) => {
   const url = 'https://vast-tor-96424.herokuapp.com/mynotes';
   const result = await axios
-    .post(url, getToken(token), payload)
+    .post(url, payload, getToken(token))
     .then((res) => res.data);
   return result;
 };
