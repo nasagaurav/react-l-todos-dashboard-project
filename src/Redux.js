@@ -2,7 +2,8 @@ import React from 'react';
 import App from './App';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const intialstate = {
   loggedin: false,
   token: '',
@@ -40,6 +41,7 @@ function Redux() {
   return (
     <Provider store={store}>
       <App />
+      <ToastContainer />
     </Provider>
   );
 }
