@@ -27,6 +27,11 @@ export const signupService = async (payload) => {
   const result = await axios.post(url, payload).then((res) => res.data);
   return result;
 };
+export const view = async (token) => {
+  const url = 'https://vast-tor-96424.herokuapp.com/mynotes';
+  const result = await axios.get(url, getToken(token)).then((res) => res.data);
+  return result;
+};
 export const create = async (payload, token) => {
   const url = 'https://vast-tor-96424.herokuapp.com/mynotes';
   const result = await axios
@@ -34,6 +39,7 @@ export const create = async (payload, token) => {
     .then((res) => res.data);
   return result;
 };
+
 export const update = async (id, status, token) => {
   const url = `https://vast-tor-96424.herokuapp.com/mynotes/${id}/${status}`;
   const result = await axios
