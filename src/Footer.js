@@ -1,5 +1,5 @@
 import React from 'react';
 function Footer() {
-  return <div className="footer">Crafted by Gaurav Nasa</div>;
+  return <div className="footer">Created by GN FAKR h</div>;
 }
 export default Footer;
