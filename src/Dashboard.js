@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { create, update, del, view } from './services';
 import { useSelector } from 'react-redux';
 function Dashboard() {
+  const r1 = useRef(); //title
+  const r2 = useRef(); //description
   const state = useSelector((s) => s);
   const { token } = state;
   const [a, seta] = useState([]);
@@ -19,11 +21,23 @@ function Dashboard() {
 
   const _update = (id, status) => {};
   const _delete = (id) => {};
+  const insert = () => {
+    const data = {
+      title: '',
+      description: '',
+    };
+  };
   useEffect(loadMyTodos, []);
   return (
     <div>
       <h1>Dashboard</h1>
-      <h3>My todos ?</h3>
+      <div className="form">
+        <h3>create new todo </h3>
+        <input placeholder="title" ref={r1} />
+        <input placeholder="description" ref={r2} />
+        <button onClick={insert}>insert</button>
+      </div>
+      <h3>My todos {a.length}</h3>
 
       <table>
         <thead>
