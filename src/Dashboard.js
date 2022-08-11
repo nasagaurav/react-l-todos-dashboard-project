@@ -35,7 +35,13 @@ function Dashboard() {
       description: r2.current.value,
     };
     create(data, token).then((d) => {
-      console.log(d);
+      // console.log(d);
+      if (d.status) {
+        // creaed success
+        seta(d.data);
+      } else {
+        // failed
+      }
     });
   };
   useEffect(loadMyTodos, []);
