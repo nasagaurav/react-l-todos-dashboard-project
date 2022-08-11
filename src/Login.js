@@ -13,7 +13,12 @@ function Login() {
     };
 
     loginService(data).then((d) => {
-      console.log(d);
+      if (d.status) {
+        // login success
+        dispatch({ type: 'login', payload: d.token });
+      } else {
+        // failed to login
+      }
     });
   };
   return (
