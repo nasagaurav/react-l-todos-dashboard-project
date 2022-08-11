@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector, useDisptch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 function Header() {
   const state = useSelector((s) => s);
-  const dispatch = useDisptch();
+  const dispatch = useDispatch();
   const { loggedin, token, user } = state;
 
   const logout = () => {
