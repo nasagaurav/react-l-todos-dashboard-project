@@ -43,7 +43,7 @@ export const create = async (payload, token) => {
 export const update = async (id, status, token) => {
   const url = `https://vast-tor-96424.herokuapp.com/mynotes/${id}/${status}`;
   const result = await axios
-    .patch(url, getToken(token))
+    .patch(url, {}, getToken(token))
     .then((res) => res.data);
   return result;
 };
