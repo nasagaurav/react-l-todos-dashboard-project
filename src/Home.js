@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { getAllTodosOfAllUser } from './services';
 function Home() {
   const [a, seta] = useState([]);
 
   const loadAllTodos = () => {
     // need a service
-    // getAllTodosOfAllUser
+    getAllTodosOfAllUser().then((d) => seta(d));
   };
 
   useEffect(loadAllTodos, []);
@@ -18,7 +19,7 @@ function Home() {
 
       <ul>
         {a.map((x) => (
-          <li>{x}</li>
+          <li>{x.title}</li>
         ))}
       </ul>
     </div>
