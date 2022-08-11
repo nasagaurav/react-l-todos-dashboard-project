@@ -14,7 +14,12 @@ function reducer(state = intialstate, action) {
     case 'logout':
       return state;
     case 'login':
-      return state;
+      return {
+        ...state,
+        token: action.payload,
+        user: 'admin',
+        loggedin: true,
+      };
     case 'signup':
       return state;
     case 'create-todo':
