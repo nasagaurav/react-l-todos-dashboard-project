@@ -19,7 +19,7 @@ export default function ButtonAppBar() {
     dispatch({ type: 'logout' });
   };
   const hc = (str) => {
-    navigate(`/${str}`);
+    navigate(str);
   };
   return (
     <Box sx={{ flexGrow: 1 }}>
