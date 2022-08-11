@@ -20,6 +20,8 @@ function reducer(state = intialstate, action) {
         user: 'admin',
         loggedin: true,
       };
+    case 'setusername':
+      return { ...state, user: action.payload };
     case 'signup':
       return state;
     case 'create-todo':

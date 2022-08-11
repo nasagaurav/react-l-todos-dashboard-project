@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
 import { loginService } from './services';
+import { useDispatch } from 'react-redux';
 function Login() {
+  const dispatch = useDispatch();
   const r1 = useRef(); //email
   const r2 = useRef(); //password
 
@@ -16,6 +18,7 @@ function Login() {
       if (d.status) {
         // login success
         dispatch({ type: 'login', payload: d.token });
+        dispatch({ type: 'setusername', payload: data.email });
       } else {
         // failed to login
       }
