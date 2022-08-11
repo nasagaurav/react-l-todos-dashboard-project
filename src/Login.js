@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { loginService } from './services';
 function Login() {
   const r1 = useRef(); //email
   const r2 = useRef(); //password
@@ -11,7 +12,9 @@ function Login() {
       password: r2.current.value,
     };
 
-    // loginService
+    loginService(data).then((d) => {
+      console.log(d);
+    });
   };
   return (
     <div className="form">
